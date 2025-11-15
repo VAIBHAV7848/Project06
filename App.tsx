@@ -202,13 +202,13 @@ const App: React.FC = () => {
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
         />
-        <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 sm:p-6 md:p-8">
+        <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 sm:p-6 md:p-8 pb-24">
           <div key={activeView} className="content-enter">
             {renderContent()}
           </div>
         </main>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };
