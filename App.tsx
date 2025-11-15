@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Sidebar from './components/Sidebar';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import HomeFeed from './components/HomeFeed';
 import NotesSection from './components/NotesSection';
 import DonationBridge from './components/DonationBridge';
@@ -206,6 +207,7 @@ const App: React.FC = () => {
             {renderContent()}
           </div>
         </main>
+        <Footer />
       </div>
     </div>
   );
