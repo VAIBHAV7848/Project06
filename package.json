@@ -1,0 +1,29 @@
+{
+  "name": "kle-tech-connect",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:prod": "vite build --mode production",
+    "build:gh-pages": "vite build --base=/Project06/",
+    "deploy:gh-pages": "npm run build:gh-pages && gh-pages -d dist",
+    "docker:build": "docker build -t kle-tech-connect .",
+    "docker:run": "docker run -p 8080:80 --env-file .env kle-tech-connect",
+    "docker:build:run": "npm run docker:build && npm run docker:run"
+  },
+  "dependencies": {
+    "@google/genai": "^1.29.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "gh-pages": "^6.3.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}
