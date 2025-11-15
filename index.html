@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KLE Tech Connect</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --bg-dark-navy: #0a0f1e;
+        --bg-black: #010306;
+        --glass-bg: rgba(15, 23, 42, 0.5); /* slate-900/50 */
+        --border-color: rgba(56, 189, 248, 0.2); /* sky-400/20 */
+        --border-hover: rgba(56, 189, 248, 0.5);
+        --text-primary: #e2e8f0; /* slate-200 */
+        --text-secondary: #94a3b8; /* slate-400 */
+        --accent-blue: #38bdf8; /* sky-400 */
+        --accent-cyan: #22d3ee; /* cyan-400 */
+        --accent-purple: #a78bfa; /* violet-400 */
+        --accent-green: #34d399; /* emerald-400 */
+        --accent-red: #f87171; /* red-400 */
+        --glow-blue: rgba(56, 189, 248, 0.5);
+        --glow-cyan: rgba(34, 211, 238, 0.5);
+        --glow-purple: rgba(167, 139, 250, 0.5);
+        --glow-green: rgba(52, 211, 153, 0.5);
+        --glow-red: rgba(248, 113, 113, 0.5);
+      }
+      body {
+        font-family: 'Exo 2', sans-serif;
+        background-color: var(--bg-black);
+        background-image: linear-gradient(to bottom, var(--bg-dark-navy), var(--bg-black));
+        color: var(--text-primary);
+        overflow: hidden;
+      }
+      .tech-grid-bg {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: -1;
+        background-image:
+          linear-gradient(rgba(56, 189, 248, 0.1) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(56, 189, 248, 0.1) 1px, transparent 1px);
+        background-size: 3rem 3rem;
+        animation: pan-grid 30s linear infinite;
+      }
+
+      @keyframes pan-grid {
+        0% { background-position: 0 0; }
+        100% { background-position: 3rem 3rem; }
+      }
+      
+      .content-enter {
+        animation: fadeInSlideUp 0.6s ease-out forwards;
+      }
+      
+      @keyframes fadeInSlideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Custom scrollbar */
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(56, 189, 248, 0.2);
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.4); }
+
+      /* Holographic Corner Effect */
+      .holographic-corners {
+        position: relative;
+      }
+      .holographic-corners::before, .holographic-corners::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        background-color: var(--accent-cyan);
+        filter: blur(15px);
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+      }
+      .holographic-corners::before { top: -10px; left: -10px; }
+      .holographic-corners::after { bottom: -10px; right: -10px; }
+      .holographic-corners:hover::before, .holographic-corners:hover::after { opacity: 0.15; }
+
+      /* --- High-tech Button System --- */
+      .btn-base {
+        padding: 0.6rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+        transition: color 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+        transform: translateY(0);
+      }
+      .btn-base:hover {
+        transform: translateY(-2px);
+      }
+      .btn-base.btn-primary {
+        background: var(--accent-blue-t);
+        border: 1px solid var(--border-color);
+        color: var(--accent-blue);
+      }
+      .btn-base.btn-primary:hover {
+        color: white;
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 15px var(--glow-blue);
+      }
+      .btn-base.btn-secondary {
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+      }
+      .btn-base.btn-secondary:hover {
+        color: white;
+        border-color: var(--text-secondary);
+        box-shadow: 0 0 10px rgba(148, 163, 184, 0.3);
+      }
+      .btn-base.btn-purple {
+        background-color: rgba(167, 139, 250, 0.1);
+        border: 1px solid rgba(167, 139, 250, 0.3);
+        color: var(--accent-purple);
+      }
+      .btn-base.btn-purple:hover {
+        color: white;
+        border-color: var(--accent-purple);
+        box-shadow: 0 0 15px var(--glow-purple);
+      }
+      .btn-base.btn-green {
+        background-color: rgba(52, 211, 153, 0.1);
+        border: 1px solid rgba(52, 211, 153, 0.3);
+        color: var(--accent-green);
+      }
+      .btn-base.btn-green:hover {
+        color: white;
+        border-color: var(--accent-green);
+        box-shadow: 0 0 15px var(--glow-green);
+      }
+      .btn-base.btn-red {
+        background-color: rgba(248, 113, 113, 0.1);
+        border: 1px solid rgba(248, 113, 113, 0.3);
+        color: var(--accent-red);
+      }
+      .btn-base.btn-red:hover {
+        color: white;
+        border-color: var(--accent-red);
+        box-shadow: 0 0 15px var(--glow-red);
+      }
+
+      .btn-solid-cyan {
+        padding: 0.6rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: box-shadow 0.3s, transform 0.2s;
+        background-color: var(--accent-cyan);
+        color: var(--bg-black);
+        box-shadow: 0 0 15px var(--glow-cyan);
+      }
+      .btn-solid-cyan:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 0 25px var(--glow-cyan);
+      }
+
+
+      /* High-tech input */
+       .input-high-tech {
+        background-color: rgba(15, 23, 42, 0.7);
+        border: 1px solid var(--border-color);
+        transition: border-color 0.3s, box-shadow 0.3s;
+       }
+       .input-high-tech:focus {
+        outline: none;
+        border-color: var(--accent-blue);
+        box-shadow: 0 0 15px var(--glow-blue);
+       }
+
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/Project06/assets/index-DVSEPsit.js"></script>
+  <link rel="modulepreload" crossorigin href="/Project06/assets/react-vendor-Bzgz95E1.js">
+  <link rel="modulepreload" crossorigin href="/Project06/assets/genai-vendor-Bvi6MtV9.js">
+</head>
+  <body>
+    <div class="tech-grid-bg"></div>
+    <div id="root"></div>
+  </body>
+</html>
