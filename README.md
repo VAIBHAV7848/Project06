@@ -6,8 +6,6 @@
 
 A modern university student platform with AI-powered tutoring, study rooms, events, and more.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1rflHNpVshMMJqBwayK1jzo4FPGPwK3dZ
-
 ## Features
 
 - 🤖 AI-Powered Tutoring with Gemini
@@ -24,7 +22,6 @@ View your app in AI Studio: https://ai.studio/apps/drive/1rflHNpVshMMJqBwayK1jzo
 
 - Node.js 20+ 
 - npm or yarn
-- Gemini API Key from [Google AI Studio](https://aistudio.google.com/apikey)
 
 ### Local Development
 
